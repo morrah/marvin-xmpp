@@ -92,6 +92,7 @@ aniget <number> <string>:
         "Convert codes into characters"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         string = unicode(string).encode('utf-8')
         string = re.sub(ur"&quot;", ur"\"", string)
         string = re.sub(ur"&#37;", ur"%", string)
@@ -107,6 +108,8 @@ aniget <number> <string>:
 =======
 =======
 >>>>>>> 7cc59dd... Add help support. Add capalog plugin.
+=======
+>>>>>>> 7cc59dd... Add help support. Add capalog plugin.
         string = re.sub(r"&quot;", r"\"", string)
         string = re.sub(r"&#37;", r"%", string)
         string = re.sub(r"&#39; ", r"'", string)        
@@ -119,6 +122,9 @@ aniget <number> <string>:
         string = re.sub(r"&#35;", r"#", string)
         string = re.sub(r"&amp;", r"&", string)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 7cc59dd... Add help support. Add capalog plugin.
+=======
 >>>>>>> 7cc59dd... Add help support. Add capalog plugin.
 =======
 >>>>>>> 7cc59dd... Add help support. Add capalog plugin.
