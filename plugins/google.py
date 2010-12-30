@@ -1,5 +1,6 @@
 import urllib
 import json
+import random
 
 class Google:
     ''' Google module
@@ -18,6 +19,35 @@ translate <string> [lang <language>|<language>]:
         except ValueError:
             text = msg
             lang = 'en|ru'
+
+        languages = {'az': 'азербайджанский', 'sq': 'албанский', 'ar': 'арабский', 'hy': 'армянский', 'af': 'африкаанс', \
+    'eu': 'баскский', 'be': 'белорусский', 'bg': 'болгарский', 'cy': 'валлийский', 'hu': 'венгерский', 'vi': 'вьетнамский', \
+    'gl': 'галисийский', 'nl': 'голландский', 'el': 'греческий', 'ka': 'грузинский', 'da': 'датский', 'iw': 'иврит', \
+    'yi': 'идиш', 'id': 'индонезийский', 'ga': 'ирландский', 'is': 'исландский', 'es': 'испанский', 'it': 'итальянский', \
+    'ca': 'каталанский', 'zh-CN': 'китайский', 'ko': 'корейский', 'ht': 'креольский (Гаити)', 'la': 'латынь', \
+    'lv': 'латышский', 'lt': 'литовский', 'mk': 'македонский', 'ms': 'малайский', 'mt': 'мальтийский', 'de': 'немецкий', \
+    'no': 'норвежский', 'fa': 'персидский', 'pl': 'польский', 'pt': 'португальский', 'ro': 'румынский', 'ru': 'русский', \
+    'sr': 'сербский', 'sk': 'словацкий', 'sl': 'словенский', 'sw': 'суахили', 'tl': 'тагальский', 'th': 'тайский', \
+    'tr': 'турецкий', 'uk': 'украинский', 'ur': 'урду', 'fi': 'финский', 'fr': 'французский', 'hi': 'хинди', \
+    'hr': 'хорватский', 'cs': 'чешский', 'sv': 'шведский', 'et': 'эстонский', 'ja': 'японский'}
+
+#       translate <string> [lang help]
+        if lang == 'help':
+            lang_help = ''
+            for k, v in languages.iteritems(): lang_help += k + '=' + v + '; '
+            sendfunc(lang_help.decode('utf-8'), 'groupchat')
+            return
+
+#       translate <string> [lang chain<chain_len>]
+        if lang.find('chain') >= 0:
+            chain_len = int( lang.rsplit('chain', 1)[1] )
+            random.seed
+            lang = 'ru|'
+            tmp_lst = []
+            for i in languages.iterkeys(): tmp_lst.append(i)
+            for k in random.sample(tmp_lst, chain_len): lang += k + '|'
+            lang += 'ru'
+            #sendfunc(lang, 'groupchat')
         
         if lang.find('jp') >= 0:
             sendfunc('Use ja, Luke.', 'groupchat')
